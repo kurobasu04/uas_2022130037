@@ -8,6 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <style>
+        .carousel-inner img {
+            height: 500px;
+            /* Adjust the height as needed */
+            object-fit: cover;
+            width: 100%;
+        }
+    </style>
+
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -25,109 +35,68 @@
 
 <body>
     <div id="app">
-        <header id="header" class="header header-fullwidth header-transparent-bg">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <div class="header-desk header-desk_type_1">
-                    <div class="logo">
-                        <a href="{{ url('/') }}">
-                            <img src="assets/images/logo.png" alt="{{ config('app.name', 'Laravel') }}" class="logo__image d-block" />
-                        </a>
-                    </div>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('') }}" alt="SHOPSEC" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <nav class="navigation">
-                        <ul class="navigation__list list-unstyled d-flex">
-                            <li class="navigation__item">
-                                <a href="{{ url('/') }}" class="navigation__link">Home</a>
-                            </li>
-                            <li class="navigation__item">
-                                <a href="{{ route('shop') }}" class="navigation__link">Shop</a>
-                            </li>
-                            <li class="navigation__item">
-                                <a href="{{ route('cart') }}" class="navigation__link">Cart</a>
-                            </li>
-                            <li class="navigation__item">
-                                <a href="{{ route('about') }}" class="navigation__link">About</a>
-                            </li>
-                            <li class="navigation__item">
-                                <a href="{{ route('contact') }}" class="navigation__link">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        <!-- Menu Links -->
+                        <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">SHOP</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CART</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
+                    </ul>
 
-                    <div class="header-tools d-flex align-items-center">
-                        <div class="header-tools__item hover-container">
-                            <div class="js-hover__open position-relative">
-                                <a class="js-search-popup search-field__actor" href="#">
-                                    <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <use href="#icon_search" />
-                                    </svg>
-                                    <i class="btn-icon btn-close-lg"></i>
-                                </a>
-                            </div>
-                            <div class="search-popup js-hidden-content">
-                                <form action="#" method="GET" class="search-field container">
-                                    <p class="text-uppercase text-secondary fw-medium mb-4">What are you looking for?</p>
-                                    <div class="position-relative">
-                                        <input class="search-field__input search-popup__input w-100 fw-medium" type="text" name="search-keyword" placeholder="Search products" />
-                                        <button class="btn-icon search-popup__submit" type="submit">
-                                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <use href="#icon_search" />
-                                            </svg>
-                                        </button>
-                                        <button class="btn-icon btn-close-lg search-popup__reset" type="reset"></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                    <!-- Right Side Of Navbar -->
 
-                        <!-- Authentication Links -->
+                    <ul class="navbar-nav ms-auto">
                         @guest
                             @if (Route::has('login'))
-                                <div class="header-tools__item">
-                                    <a href="{{ route('login') }}" class="header-tools__item">
-                                        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <use href="#icon_user" />
-                                        </svg>
-                                    </a>
-                                </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
                             @endif
+
                             @if (Route::has('register'))
-                                <div class="header-tools__item">
-                                    <a href="{{ route('register') }}" class="header-tools__item">Register</a>
-                                </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
                             @endif
                         @else
-                            <div class="header-tools__item dropdown">
-                                <a id="navbarDropdown" class="header-tools__item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
-                            </div>
+                            </li>
                         @endguest
 
-                        <a href="wishlist.html" class="header-tools__item">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_heart" />
-                            </svg>
-                        </a>
-
-                        <a href="{{ route('cart') }}" class="header-tools__item header-tools__cart">
-                            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <use href="#icon_cart" />
-                            </svg>
-                            <span class="cart-amount d-block position-absolute js-cart-items-count">3</span>
-                        </a>
-                    </div>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </nav>
+
 
         <main class="py-4">
             @yield('content')
