@@ -30,6 +30,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
 
     <!-- Scripts -->
+    <style>
+        .main-product-card img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .main-product-card .card-body {
+            padding-left: 2rem;
+        }
+
+        .card-title {
+            font-weight: bold;
+        }
+
+        .card-body p {
+            color: #ff6600;
+            /* Warna harga produk */
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -48,10 +71,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <!-- Menu Links -->
-                        <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">SHOP</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">CART</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">SELL</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">BUY</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,6 +93,16 @@
                                 </li>
                             @endif
                         @else
+                            @if (Auth::user()->utype === 'ADM')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.index') }}">Admin Dashboard</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.index') }}">User Dashboard</a>
+                                </li>
+                            @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -89,7 +122,6 @@
                                 </div>
                             </li>
                         @endguest
-
                     </ul>
                 </div>
             </div>
