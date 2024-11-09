@@ -32,6 +32,11 @@ Route::middleware(['auth', AuthUser::class])->group(function () {
     // Add more user-specific routes here
 });
 
+Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::get('/order', [OrderController::class, 'index'])->name('order');
+Route::get('/user', [UserController::class, 'index'])->name('user');
+
 // Resource CRUD
 Route::resource('categories', CategoryController::class);
 Route::resource('products', ProductController::class);
