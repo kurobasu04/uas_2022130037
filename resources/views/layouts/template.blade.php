@@ -18,11 +18,72 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        body {
+            background-color: #121212;
+            /* Latar belakang gelap */
+            color: #e0e0e0;
+            /* Teks terang */
+        }
+
+        .navbar {
+            background-color: #1f1f1f;
+            /* Navbar gelap */
+        }
+
+        .navbar .nav-link {
+            color: #e0e0e0 !important;
+            /* Teks navbar terang */
+        }
+
+        .navbar .navbar-brand {
+            color: #e0e0e0 !important;
+            /* Teks brand terang */
+        }
+
+        .navbar .nav-link:hover {
+            color: #00bcd4 !important;
+            /* Warna hover terang */
+        }
+
+        .btn {
+            background-color: #00bcd4;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #0097a7;
+        }
+
+        .card {
+            background-color: #333333;
+            /* Card gelap */
+            border: 1px solid #444444;
+        }
+
+        .table {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+        }
+
+        .table thead {
+            background-color: #222222;
+        }
+
+        .table thead th {
+            color: #e0e0e0;
+        }
+
+        .table tbody tr:hover {
+            background-color: #333333;
+        }
+    </style>
 </head>
 
 <body class="body">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"> <i class="bi bi-bag"></i> DASHBOARD </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

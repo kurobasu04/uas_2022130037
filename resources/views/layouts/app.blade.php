@@ -97,10 +97,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.index') }}">Admin Dashboard</a>
                                 </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.index') }}">User Dashboard</a>
-                                </li>
                             @endif
 
                             <li class="nav-item dropdown">
@@ -126,7 +122,6 @@
                 </div>
             </div>
         </nav>
-
 
         <main class="py-4">
             @yield('content')
