@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -36,9 +44,23 @@ class ProductController extends Controller
             'category_id' => 'required',
         ]);
 
-        Product::create($request->all());
+        $validated = $request->only('name', 'description', 'price', 'category_id');
+
+        if ($request->hasFile('avatar')) {
+            $request->validate([
+                'avatar' => 'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
+            ]);
+
+            $imagePath = $request->file('avatar')->store('public/images');
+
+            $validated['avatar'] = $imagePath;
+        }
+
+        Product::create($validated);
+
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -53,7 +75,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**

@@ -42,7 +42,7 @@
                                             {{ str_pad($product->id, 4, '0', STR_PAD_LEFT) }}</th>
                                         <td class="text-dark">{{ $product->name }}</td>
                                         <td class="text-dark">{{ $product->description }}</td>
-                                        <td class="text-dark">${{ number_format($product->price, 2) }}</td>
+                                        <td class="text-dark">Rp. {{ number_format($product->price) }}</td>
                                         <td class="text-center d-flex justify-content-center gap-2">
                                             <!-- Show/Detail -->
                                             <a href="{{ route('products.show', $product->id) }}"
