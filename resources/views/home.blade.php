@@ -44,65 +44,60 @@
         </div>
     </div>
     <div class="container my-5">
-        <h3 class="mb-4">2ND PRODUCTS OF MOTORCYCLE</h3>
+        <h3 class="mb-5">REKOMENDASI PRODUK</h3>
         <div class="row g-4">
 
             {{-- Produk Motor --}}
             <!-- Large Product Button -->
             <div class="row">
-                @foreach ($products as $product)
-                    <div class="col-12 mb-4">
-                        <button class="btn w-100 p-4 d-flex align-items-center justify-content-center"
-                            style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); position: relative;">
-
-                            <div class="me-3" style="position: absolute; bottom: 10px; left: 20px; font-size: medium;">
-                                <h6 class="mb-1">{{ $product->name }}</h6>
-                                <p class="text-danger mb-0">Rp. {{ number_format($product->price) }}</p>
-                            </div>
-
-                            <img src="{{ asset('storage/images/purepng.com-harley-davidson-1200-sportstermotorcyclemotorbikebikevehicleharley-davidson-981525158507x5nxq.png') }}"
-                                alt="Harley Davidson" style="width: 500px; height: auto; object-fit: cover;">
-                        </button>
-                    </div>
-                @endforeach
+                <div class="col-12 mb-4">
+                    <button class="btn w-100 p-4 d-flex align-items-center justify-content-center"
+                        style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); position: relative;">
+                        <div class="me-3" style="position: absolute; bottom: 10px; left: 20px; font-size: medium;">
+                            <h6 class="mb-1">Harley Davidson</h6>
+                            <p class="text-danger mb-0">Mulai Dari Rp. 100JT</p>
+                        </div>
+                        <img src="{{ asset('storage/images/purepng.com-harley-davidson-1200-sportstermotorcyclemotorbikebikevehicleharley-davidson-981525158507x5nxq.png') }}"
+                            alt="Harley Davidson" style="max-width: 50%; height: auto; object-fit: contain;">
+                    </button>
+                </div>
             </div>
+
             <!-- Small Product Buttons -->
-            <div class="col-md-4 col-6">
-                <button class="btn w-100 p-3 text-center"
-                    style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                    <!-- Set a consistent height -->
-                    <img src="https://th.bing.com/th/id/R.b45abbe65628faf5ce6d709526ececf5?rik=1%2fvCEPMuEnOdEg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fmotorbike-hd-png--1204.png&ehk=r39XPtcEQ%2b2cST2Ad2xJ1h2bnFlAcQiKFpuFdK1TnEo%3d&risl=&pid=ImgRaw&r=0"
-                        alt="X2D 100C" class="img-fluid" style="width: 150px; height: auto;">
-                    <h6 class="mt-2">X2D 100C</h6>
-                    <p class="text-danger">€6,699.00</p>
-                </button>
+            <div class="row">
+                <div class="col-md-4 col-6 mb-4">
+                    <button class="btn w-100 p-3 text-center"
+                        style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
+                        <img src="https://th.bing.com/th/id/R.b45abbe65628faf5ce6d709526ececf5?rik=1%2fvCEPMuEnOdEg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fmotorbike-hd-png--1204.png&ehk=r39XPtcEQ%2b2cST2Ad2xJ1h2bnFlAcQiKFpuFdK1TnEo%3d&risl=&pid=ImgRaw&r=0"
+                            alt="X2D 100C" class="img-fluid" style="width: 50%; height: auto;">
+                        <h6 class="mt-2">X2D 100C</h6>
+                        <p class="text-danger">€6,699.00</p>
+                    </button>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <button class="btn w-100 p-3 text-center"
+                        style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
+                        <img src="https://th.bing.com/th/id/R.ee062001ff387ce17e1f09cb5507e519?rik=wDs%2fqUZZmUHP1A&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f05%2fMotorcycle-Free-PNG-Image.png&ehk=FRUgrk7ohxstX%2bsRT%2fF9ld3HfNUrYJZjfRHOrAznPQk%3d&risl=&pid=ImgRaw&r=0"
+                            alt="907X & CFV 100C" class="img-fluid" style="width: 50%; height: auto;">
+                        <h6 class="mt-2">907X & CFV 100C</h6>
+                        <p class="text-danger">€7,799.00</p>
+                    </button>
+                </div>
+                <div class="col-md-4 col-6 mb-4">
+                    <button class="btn w-100 p-3 text-center"
+                        style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
+                        <img src="https://pngimg.com/uploads/motorcycle/motorcycle_PNG3173.png"
+                            alt="907X Anniversary Edition Kit" class="img-fluid" style="width: 50%; height: auto;">
+                        <h6 class="mt-2">907X Anniversary Edition Kit</h6>
+                        <p class="text-danger">€15,500.00</p>
+                    </button>
+                </div>
             </div>
-            <div class="col-md-4 col-6">
-                <button class="btn w-100 p-3 text-center"
-                    style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                    <!-- Set a consistent height -->
-                    <img src="https://th.bing.com/th/id/R.ee062001ff387ce17e1f09cb5507e519?rik=wDs%2fqUZZmUHP1A&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f05%2fMotorcycle-Free-PNG-Image.png&ehk=FRUgrk7ohxstX%2bsRT%2fF9ld3HfNUrYJZjfRHOrAznPQk%3d&risl=&pid=ImgRaw&r=0"
-                        alt="907X & CFV 100C" class="img-fluid" style="width: 150px; height: auto;">
-                    <h6 class="mt-2">907X & CFV 100C</h6>
-                    <p class="text-danger">€7,799.00</p>
-                </button>
+
+            <div class="text-center mt-3">
+                <a href="#" class="text-decoration-none" style="color: black">More ></a>
             </div>
-            <div class="col-md-4 col-6">
-                <button class="btn w-100 p-3 text-center"
-                    style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                    <!-- Set a consistent height -->
-                    <img src="https://pngimg.com/uploads/motorcycle/motorcycle_PNG3173.png"
-                        alt="907X Anniversary Edition Kit" class="img-fluid" style="width: 150px; height: auto;">
-                    <h6 class="mt-2">907X Anniversary Edition Kit</h6>
-                    <p class="text-danger">€15,500.00</p>
-                </button>
-            </div>
+
+
         </div>
-
-        <div class="text-center mt-3">
-            <a href="#" class="text-decoration-none" style="color: black">More ></a>
-        </div>
-
-
-    </div>
-@endsection
+    @endsection

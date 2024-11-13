@@ -73,7 +73,6 @@
                         <!-- Menu Links -->
                         <li class="nav-item"><a class="nav-link" href="#">SHOP</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">CART</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">SELL</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">BUY</a></li>
                     </ul>
 
@@ -96,6 +95,10 @@
                             @if (Auth::user()->utype === 'ADM')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('admin.index') }}">Admin Dashboard</a>
+                                </li>
+                            @elseif (Auth::user()->utype === 'USR')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user.dashboard') }}">User Dashboard</a>
                                 </li>
                             @endif
 
