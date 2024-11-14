@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="container my-5">
-        <h3 class="mb-5">REKOMENDASI PRODUK</h3>
+        <h3 class="mb-5">REKOMENDASI PRODUK MOTOR BEKAS</h3>
         <div class="row g-4">
 
             {{-- Produk Motor --}}
@@ -55,7 +55,7 @@
                         style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); position: relative;">
                         <div class="me-3" style="position: absolute; bottom: 10px; left: 20px; font-size: medium;">
                             <h6 class="mb-1">Harley Davidson</h6>
-                            <p class="text-danger mb-0">Mulai Dari Rp. 100JT</p>
+                            <p class="text-danger mb-0">Mulai Dari Rp. 100JT-an</p>
                         </div>
                         <img src="{{ asset('storage/images/purepng.com-harley-davidson-1200-sportstermotorcyclemotorbikebikevehicleharley-davidson-981525158507x5nxq.png') }}"
                             alt="Harley Davidson" style="max-width: 50%; height: auto; object-fit: contain;">
@@ -68,28 +68,29 @@
                 <div class="col-md-4 col-6 mb-4">
                     <button class="btn w-100 p-3 text-center"
                         style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                        <img src="https://th.bing.com/th/id/R.b45abbe65628faf5ce6d709526ececf5?rik=1%2fvCEPMuEnOdEg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fmotorbike-hd-png--1204.png&ehk=r39XPtcEQ%2b2cST2Ad2xJ1h2bnFlAcQiKFpuFdK1TnEo%3d&risl=&pid=ImgRaw&r=0"
-                            alt="X2D 100C" class="img-fluid" style="width: 50%; height: auto;">
-                        <h6 class="mt-2">X2D 100C</h6>
-                        <p class="text-danger">€6,699.00</p>
+                        <img src="{{ asset('storage/images/20.png') }}"
+                            style="max-width: 50%; height: auto; object-fit: contain;">
+                        <h6 class="mt-2">HONDA CB400SF (Super Four) 2003</h6>
+                        <p class="text-danger">Mulai dari Rp80JT-an</p>
                     </button>
                 </div>
+
                 <div class="col-md-4 col-6 mb-4">
                     <button class="btn w-100 p-3 text-center"
                         style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                        <img src="https://th.bing.com/th/id/R.ee062001ff387ce17e1f09cb5507e519?rik=wDs%2fqUZZmUHP1A&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f05%2fMotorcycle-Free-PNG-Image.png&ehk=FRUgrk7ohxstX%2bsRT%2fF9ld3HfNUrYJZjfRHOrAznPQk%3d&risl=&pid=ImgRaw&r=0"
+                        <img src="{{ asset('storage/images/vulcan.png') }}"
                             alt="907X & CFV 100C" class="img-fluid" style="width: 50%; height: auto;">
-                        <h6 class="mt-2">907X & CFV 100C</h6>
-                        <p class="text-danger">€7,799.00</p>
+                        <h6 class="mt-2">Kawasaki Cruiser Vulcan 650</h6>
+                        <p class="text-danger">Mulai dari Rp100JT-an</p>
                     </button>
                 </div>
                 <div class="col-md-4 col-6 mb-4">
                     <button class="btn w-100 p-3 text-center"
                         style="background-color: #ffffff; border: 1px solid #ddd; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); height: 250px;">
-                        <img src="https://pngimg.com/uploads/motorcycle/motorcycle_PNG3173.png"
+                        <img src="{{ asset('storage/images/er6.png') }}"
                             alt="907X Anniversary Edition Kit" class="img-fluid" style="width: 50%; height: auto;">
-                        <h6 class="mt-2">907X Anniversary Edition Kit</h6>
-                        <p class="text-danger">€15,500.00</p>
+                        <h6 class="mt-2">kawasaki ninja 650/er6N</h6>
+                        <p class="text-danger">Mulai dari Rp70JT-an</p>
                     </button>
                 </div>
             </div>
