@@ -51,6 +51,14 @@
             font-weight: bold;
             margin-top: 5px;
         }
+
+        .input-group button {
+            white-space: nowrap;
+        }
+
+        .input-group input {
+            max-width: 60px;
+        }
     </style>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -97,7 +105,7 @@
                                 </li>
                             @elseif (Auth::user()->utype === 'USR')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.dashboard') }}">User Dashboard</a>
+                                    <a class="nav-link" href="{{ route('user.index') }}">User Dashboard</a>
                                 </li>
                             @endif
 

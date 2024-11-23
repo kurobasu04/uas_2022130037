@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -39,29 +38,23 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'price' => 'required|numeric',
             'category_id' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('avatar')) {
-            $request->validate([
-                'avatar' => 'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
-            ]);
-
-            $imagePage = $request->file('avatar')->store('public/images');
-
-            $validated['avatar'] = $imagePage;
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('images', $filename, 'public');
+            $validated['photo'] = $path;
+        } else {
+            $validated['photo'] = null;
         }
 
-        Product::create([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'price' => $validated['price'],
-            'category_id' => $validated['category_id'],
-            'avatar' => $validated['avatar'] ?? null,
-        ]);
+        Product::create($validated);
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
@@ -89,33 +82,27 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'price' => 'required|numeric',
             'category_id' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('avatar')) {
-            $request->validate([
-                'avatar' => 'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
-            ]);
-
-            $imagePage = $request->file('avatar')->store('public/images');
-
-            if ($product->avatar) {
-                Storage::delete([$product->avatar]);
+        if ($request->hasFile('photo')) {
+            if ($product->photo) {
+                Storage::disk('public')->delete($product->photo);
             }
 
-            $validated['avatar'] = $imagePage;
+            $file = $request->file('photo');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('images', $filename, 'public');
+            $validated['photo'] = $path;
+        } else {
+            $validated['photo'] = $product->photo;
         }
 
-        $product->update([
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'price' => $validated['price'],
-            'category_id' => $validated['category_id'],
-            'avatar' => $validated['avatar'] ?? $product->avatar,  // Use existing avatar if not updated
-        ]);
+        $product->update($validated);
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
@@ -125,6 +112,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->photo) {
+            Storage::delete($product->photo);
+        }
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }

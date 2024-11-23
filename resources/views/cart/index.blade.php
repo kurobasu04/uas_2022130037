@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <h2>Keranjang Belanja</h2>
         @if (count($cartItems) > 0)
-            <table class="table table-dark table-hover">
+            <table class="table table-light table-hover">
                 <thead>
                     <tr>
                         <th>Produk</th>

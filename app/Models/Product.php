@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
@@ -11,21 +12,21 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'avatar',
+        'photo',
         'category_id',
     ];
 
     protected $append = [
-        'avatar_url',
+        'photo_url',
     ];
 
-    public function getAvatarUrlAttribute()
+    public function getPhotoUrlAttribute()
     {
-        if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
-            return $this->avatar;
+        if (filter_var($this->photo, FILTER_VALIDATE_URL)) {
+            return $this->photo;
         }
 
-        return $this->avatar ? Storage::url($this->avatar) : null;
+        return $this->photo ? Storage::url($this->photo) : null;
     }
 
     public function category()
@@ -38,4 +39,8 @@ class Product extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'product_user')->withPivot('quantity');
+    }
 }

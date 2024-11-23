@@ -57,7 +57,7 @@
                             <h6 class="mb-1">Harley Davidson</h6>
                             <p class="text-danger mb-0">Mulai Dari Rp. 100JT-an</p>
                         </div>
-                        <img src="{{ asset('storage/images/purepng.com-harley-davidson-1200-sportstermotorcyclemotorbikebikevehicleharley-davidson-981525158507x5nxq.png') }}"
+                        <img src="{{ asset('storage/images/harley-davidson-1200.png') }}"
                             alt="Harley Davidson" style="max-width: 50%; height: auto; object-fit: contain;">
                     </button>
                 </div>
