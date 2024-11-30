@@ -33,7 +33,7 @@
                                 @endif
                             </td>
                             <td>{{ $item['name'] }}</td>
-                            <td>{{ isset($item['description']) ? $item['description'] : 'No description available' }}</td>
+                            <td>{{ $item['description'] ?? 'No description available' }}</td>
                             <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
                             <td>{{ $item['quantity'] }}</td>
                             <td>Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}</td>
@@ -44,7 +44,10 @@
             <h4>Total: Rp {{ number_format($total, 0, ',', '.') }}</h4>
             <div class="d-flex justify-content-between">
                 <a href="{{ route('cart.index') }}" class="btn btn-secondary">Batal</a>
-                <a href="{{ route('payment.process') }}" class="btn btn-primary">Proses Pembayaran</a>
+                <form action="{{ route('payment.process') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Proses Pembelian</button>
+                </form>
             </div>
         @else
             <p>Keranjang Anda kosong.</p>

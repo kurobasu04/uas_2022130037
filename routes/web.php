@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::get('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
+    Route::post('/payment/process', [PaymentController::class, 'process'])->name('payment.process');
 
     // Group untuk user biasa
     Route::middleware([AuthUser::class])->group(function () {

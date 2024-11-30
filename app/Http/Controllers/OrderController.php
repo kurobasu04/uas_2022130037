@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::orderby('created_at', 'DESC')->paginate(10);
-        return view('orders.index', compact('products'));
+        $orders = Order::with('user')->orderBy('created_at', 'DESC')->paginate(10);
+        return view('orders.index', compact('orders'));
     }
 
     /**
@@ -48,6 +47,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $order->load('items.product');
         return view('orders.show', compact('order'));
     }
 

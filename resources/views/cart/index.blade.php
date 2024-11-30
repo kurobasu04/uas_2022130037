@@ -29,7 +29,6 @@
                     @endforeach
                 </tbody>
             </table>
-            <h4>Total: Rp {{ number_format($total, 0, ',', '.') }}</h4>
             <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
         @else
             <p>Keranjang Anda kosong.</p>
