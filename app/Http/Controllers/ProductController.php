@@ -49,7 +49,7 @@ class ProductController extends Controller
             $file = $request->file('photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('images', $filename, 'public');
-            $validated['photo'] = $path;
+            $validated['photo'] = 'public/' . $path;
         } else {
             $validated['photo'] = null;
         }
@@ -97,7 +97,7 @@ class ProductController extends Controller
             $file = $request->file('photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('images', $filename, 'public');
-            $validated['photo'] = $path;
+            $validated['photo'] = 'public/' . $path;
         } else {
             $validated['photo'] = $product->photo;
         }

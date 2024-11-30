@@ -29,7 +29,6 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
     <style>
         .main-product-card img {
             object-fit: cover;

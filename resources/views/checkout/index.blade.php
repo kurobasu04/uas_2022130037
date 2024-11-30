@@ -20,10 +20,15 @@
                         <tr>
                             <td>
                                 @if (isset($item['photo']) && $item['photo'])
-                                    <img src="{{ asset('storage/' . $item['photo']) }}" alt="{{ $item['name'] }}"
+                                    @php
+                                        $photo_url = isset($item['photo_url'])
+                                            ? $item['photo_url']
+                                            : asset('storage/' . $item['photo']);
+                                    @endphp
+                                    <img src="{{ $photo_url }}" alt="{{ $item['name'] }}" class="img-fluid"
                                         style="width: 100px; height: auto;">
                                 @else
-                                    <img src="https://placehold.co/100x100" alt="No Image Available"
+                                    <img src="https://placehold.co/100x100" alt="No Image Available" class="img-fluid"
                                         style="width: 100px; height: auto;">
                                 @endif
                             </td>

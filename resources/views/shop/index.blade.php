@@ -22,13 +22,10 @@
                                 <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-2">
                                     @csrf
                                     <div class="input-group">
-                                        <button type="button" class="btn btn-outline-secondary btn-sm"
-                                            onclick="decrementQty(this)">-</button>
                                         <input type="text" name="quantity" value="1" class="form-control text-center"
-                                            style="max-width: 50px;" />
-                                        <button type="button" class="btn btn-outline-secondary btn-sm"
-                                            onclick="incrementQty(this)">+</button>
-                                        <button type="submit" class="btn btn-outline-primary">Pilih Produk</button>
+                                            style="max-width: 50px;" hidden />
+                                        <button type="submit" class="btn btn-outline-primary"
+                                            onclick="showSuccessAlert(event)">Pilih Produk</button>
                                     </div>
                                 </form>
                             @endauth
@@ -42,32 +39,4 @@
             {{ $products->links() }}
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-
-            function decrementQty(button) {
-                const input = button.nextElementSibling;
-                console.log('Current Value (decrement):', input.value);
-                if (parseInt(input.value) > 1) {
-                    input.value = parseInt(input.value) - 1;
-                }
-                console.log('Updated Value (decrement):', input.value);
-            }
-
-            function incrementQty(button) {
-                const input = button.previousElementSibling;
-                console.log('Current Value (increment):', input.value);
-                input.value = parseInt(input.value) + 1;
-                console.log('Updated Value (increment):', input.value);
-            }
-
-            window.decrementQty = decrementQty;
-            window.incrementQty = incrementQty;
-
-            console.log('decrementQty and incrementQty functions are attached to the window object.');
-        });
-    </script>
 @endsection
