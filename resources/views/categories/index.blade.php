@@ -40,9 +40,6 @@
                                             {{ str_pad($category->id, 4, '0', STR_PAD_LEFT) }}</th>
                                         <td class="text-dark">{{ $category->name }}</td>
                                         <td class="text-center d-flex justify-content-center gap-2">
-                                            <!-- Show/Detail -->
-                                            <a href="{{ route('categories.show', $category->id) }}"
-                                                class="btn btn-sm btn-info">SHOW</a>
                                             <!-- Edit -->
                                             <a href="{{ route('categories.edit', $category->id) }}"
                                                 class="btn btn-sm btn-warning">EDIT</a>

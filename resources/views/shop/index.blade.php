@@ -2,7 +2,20 @@
 
 @section('content')
     <div class="container py-4">
-        <h2 class="text-center mb-4">Pilih Produk</h2>
+
+        <!-- Dropdown Kategori -->
+        <div class="mb-4">
+            <label for="category" class="form-label h5">Kategori:</label>
+            <select id="category" class="form-select form-select-lg" onchange="sortProductsByCategory(this.value)">
+                <option value="">Semua Kategori</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="row">
             @foreach ($products as $product)
                 <div class="col-md-3 mb-4">
@@ -39,4 +52,10 @@
             {{ $products->links() }}
         </div>
     </div>
+
+    <script>
+        function sortProductsByCategory(categoryId) {
+            window.location.href = '?category=' + categoryId;
+        }
+    </script>
 @endsection

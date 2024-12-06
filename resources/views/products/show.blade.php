@@ -18,7 +18,7 @@
                     <div class="col-md-8 text-start">
                         <h3>#{{ str_pad($product->id, 4, '0', STR_PAD_LEFT) }} {{ $product->name }}</h3>
                         <p><strong>Description:</strong> {{ $product->description }}</p>
-                        <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
+                        <p><strong>Price:</strong> Rp.{{ number_format($product->price, 2) }}</p>
                         <p><strong>Category ID:</strong> {{ $product->category_id }}</p>
                         <p><strong>Created At:</strong>
                             {{ $product->created_at ? $product->created_at->format('d-m-Y H:i') : 'N/A' }}</p>

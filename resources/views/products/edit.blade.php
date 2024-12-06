@@ -48,12 +48,6 @@
 
                             <div class="mb-3 col-md-12 col-sm-12">
                                 <label for="avatar" class="text-light">Image</label>
-                                @if ($product->avatarUrl)
-                                    <div class="mb-2">
-                                        <img src="{{ $product->avatarUrl }}" alt="{{ $product->name }}" class="img-fluid"
-                                            style="max-width: 150px;">
-                                    </div>
-                                @endif
                                 <input type="file" class="form-control" id="avatar" name="avatar">
                             </div>
 

@@ -62,7 +62,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="text-center text-dark">No Products found.</td>
+                                        <td colspan="6" class="text-center text-dark">No Products found.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -95,9 +95,9 @@
                 });
 
                 if (found) {
-                    $('#no-results').addClass('d-none'); // hide message
+                    $('#no-results').addClass('d-none');
                 } else {
-                    $('#no-results').removeClass('d-none'); // show message
+                    $('#no-results').removeClass('d-none');
                 }
             });
         });

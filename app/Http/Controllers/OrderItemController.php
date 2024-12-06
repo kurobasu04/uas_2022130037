@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderItemController extends Controller
@@ -28,14 +29,22 @@ class OrderItemController extends Controller
         $request->validate([
             'order_id' => 'required',
             'product_id' => 'required',
-            'quantity' => 'required|numeric',
+            'quantity' => 'required|numeric|min:1',
             'price' => 'required|numeric',
         ]);
 
-        OrderItem::create($request->all());
+        $product = Product::find($request->product_id);
+        if ($product && $product->stok >= $request->quantity) {
 
-        return redirect()->route('order_items.index')
-            ->with('success', 'Order item created successfully.');
+            OrderItem::create($request->all());
+
+            $product->reduceStok($request->quantity);
+
+            return redirect()->route('order_items.index')
+                ->with('success', 'Order item created successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Stok produk tidak mencukupi.');
+        }
     }
 
     public function show(OrderItem $orderItem)
@@ -53,11 +62,24 @@ class OrderItemController extends Controller
         $request->validate([
             'order_id' => 'required',
             'product_id' => 'required',
-            'quantity' => 'required|numeric',
+            'quantity' => 'required|numeric|min:1',
             'price' => 'required|numeric',
         ]);
 
+        $oldQuantity = $orderItem->quantity;
+        $product = Product::find($orderItem->product_id);
+
+        if ($product) {
+            $product->increaseStok($oldQuantity);
+        }
+
         $orderItem->update($request->all());
+
+        if ($product && $product->stok >= $request->quantity) {
+            $product->reduceStok($request->quantity);
+        } else {
+            return redirect()->back()->with('error', 'Stok produk tidak mencukupi.');
+        }
 
         return redirect()->route('order_items.index')
             ->with('success', 'Order item updated successfully.');
@@ -65,6 +87,11 @@ class OrderItemController extends Controller
 
     public function destroy(OrderItem $orderItem)
     {
+        $product = Product::find($orderItem->product_id);
+        if ($product) {
+            $product->increaseStok($orderItem->quantity);
+        }
+
         $orderItem->delete();
 
         return redirect()->route('order_items.index')
