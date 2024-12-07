@@ -50,13 +50,13 @@
                                             <a href="{{ route('orders.show', $order->id) }}"
                                                 class="btn btn-sm btn-info">SHOW</a>
                                             <!-- Delete -->
-                                            <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
+                                            {{-- <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
                                                 class="d-inline-block">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"
                                                     onclick="return confirm('Are you sure?')">DELETE</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @empty
